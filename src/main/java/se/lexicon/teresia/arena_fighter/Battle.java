@@ -1,17 +1,26 @@
 package se.lexicon.teresia.arena_fighter;
 
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
+
 
 public class Battle {
 	public Fighter player1;
 	public Fighter player2;
 	public Round[] rounds = new Round[0];
 
+	/**
+	 * @param player1 is first fighter
+	 * @param player2 is the opponent fighter
+	 */
 	public Battle(Fighter player1, Fighter player2) {
 		this.player1 = player1;
 		this.player2 = player2;
 	}
 
+	/**
+	 * @param newRound = round with data
+	 */
 	public void AddRound(Round newRound) {
 		this.rounds = Arrays.copyOf(this.rounds, this.rounds.length + 1); // create one round for the new data
 		this.rounds[this.rounds.length - 1] = newRound;
@@ -21,27 +30,25 @@ public class Battle {
 
 	// PrintBattleLog(){}
 //
-	public void printData2() {
+	public void printDataSlow() {
 		System.out.println("Arena fight between " + this.player1.getFullName() + " and " + this.player2.getFullName());
 		for (Round round : rounds) {
 			System.out.println(
 					round.striker.getFullName() + " hits " + round.target.getFullName() + " for " + round.hitValue
-							+ " health points down to:\t " + round.targetHealth + " hp and " + round.targetStrength);
-			// System.out.println(round.target);
-			System.out.print(round.targetSurvived ? "" : round.target.getFullName() + " died");
+							+ " hp. "+round.target.getFullName()+ " is down to " + round.targetHealth + " hp");
+			
+			try {
+				TimeUnit.SECONDS.sleep(1);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(round.targetSurvived ? "" : round.target.getFullName() + " died.");
+			
 		}
 	}
 
-	public void printData3() {
-		System.out.println("Arena fight between " + this.player1.getFullName() + " and " + this.player2.getFullName());
-		for (Round round : rounds) {
-			System.out.println(
-					round.striker.getFullName() + " hits for " + round.hitValue + " and " + round.target.getFullName()
-							+ " is down to:\t " + round.targetHealth + " hp and " + round.targetStrength + " str");
-			// System.out.println(round.target);
-			System.out.print(round.targetSurvived ? "" : round.target.getFullName() + " died");
-		}
-	}
+
 
 	public void printData() {
 		System.out.println("Arena fight between " + this.player1.getFullName() + " and " + this.player2.getFullName());
@@ -54,20 +61,8 @@ public class Battle {
 		for (int i = 0; i < rounds.length; i=i+2) {
 			System.out.print(rounds[i].targetHealth +"|");
 		}	
-		System.out.println("\n"+ rounds[rounds.length-1].striker.getFullName() + " won the fight!");
-		
+		System.out.println("\n"+ rounds[rounds.length-1].striker.getFullName() + " won the fight!");	
 	}
 	
-	public Fighter ageUpgradeAndReset() {
-		Fighter winner = rounds[rounds.length-1].striker;
-		Fighter loser = rounds[rounds.length-1].target;
-		winner.addAge(1);
-		winner.upgradeStartHealthPoints(loser.getStartHealthPoints() * 0.3);
-		winner.setHealthPoints(winner.getStartHealthPoints());
-		winner.upgradeStartStrength(loser.getStartStrength() * 0.3);
-		winner.setStrenght(winner.getStartStrength());
-		
-		return winner;
-	}
-
+	
 }
