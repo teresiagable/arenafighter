@@ -5,8 +5,6 @@ import se.lexicon.teresia.number_gen.RandomNumberGenerator;
 
 public class Fighter {
 
-	// static RandomNameGenerator rNameG = new RandomNameGenerator();
-	
 	private String fullName;
 	private int age;
 	public static final int theRetirementAge = 50;
@@ -101,10 +99,10 @@ public class Fighter {
 
 	public int doHit() {
 		// calculate a hitValue from this fighter
-		
+
 		int critFactor = RandomNumberGenerator.getInstance().getRandomIntBetween(1, 2);
-		//double rbgDouble =RNGnum/(double)10;
-		double hitValue = ((healthPoints + strenght)/ 2 * hitFactor * critFactor);
+
+		double hitValue = ((healthPoints + strenght) / 2 * hitFactor * critFactor);
 		return (int) Math.round(hitValue);
 	}
 
@@ -134,7 +132,7 @@ public class Fighter {
 
 		Fighter winner = null;
 		Fighter loser = null;
-		
+
 		if (myFighter.alive) {
 			winner = myFighter;
 			loser = myOpponent;
@@ -144,11 +142,11 @@ public class Fighter {
 		}
 
 		winner.addAge(1);
-		winner.upgradeStartHealthPoints(loser.getStartHealthPoints() * (1-fatigueFactor));
+		winner.upgradeStartHealthPoints(loser.getStartHealthPoints() * (1 - fatigueFactor));
 		winner.setHealthPoints(winner.getStartHealthPoints());
-		winner.upgradeStartStrength(loser.getStartStrength() * (1-fatigueFactor));
+		winner.upgradeStartStrength(loser.getStartStrength() * (1 - fatigueFactor));
 		winner.setStrenght(winner.getStartStrength());
-		
+
 		return winner;
 
 	}

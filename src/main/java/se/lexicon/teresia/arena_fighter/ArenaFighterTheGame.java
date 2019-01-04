@@ -2,10 +2,6 @@ package se.lexicon.teresia.arena_fighter;
 
 import java.util.Scanner;
 
-/**
- * @author deltagare
- *
- */
 public class ArenaFighterTheGame {
 	private static Scanner scanner = new Scanner(System.in);
 
@@ -37,7 +33,7 @@ public class ArenaFighterTheGame {
 
 			myFighter = Fighter.ageUpgradeAndReset(myFighter, myOpponent);
 			myFighter.printNewValues();
-			
+
 			if (myFighter.getAge() >= Fighter.theRetirementAge) {
 				System.out.println(myFighter.getFullName() + " is to old to fight. He is limping away in the sunset.");
 				break;
@@ -78,7 +74,7 @@ public class ArenaFighterTheGame {
 			questionString = "Do you want to continue fight with the winner?";
 			break;
 		default:
-			questionString = "Do you want to continue fight with the winner?";
+			questionString = "What?";
 			break;
 		}
 		System.out.println(questionString);
