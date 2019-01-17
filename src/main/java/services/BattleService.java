@@ -29,6 +29,7 @@ public class BattleService {
 				theBattle.printDataSlow(); // print one row each second for more excitement!
 				myFighter.printNewValues(); // print the winners new health and strength values
 
+				
 				if (myFighter.isRetired())
 					break;
 
