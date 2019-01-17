@@ -29,8 +29,8 @@ public class Fighter {
 
 		this.fullName = RandomNameGenerator.getRandomFirstName();
 
-		this.age = RandomNumberGenerator.getInstance().getRandomIntBetween(40, 45);
-		this.startHealthPoints = RandomNumberGenerator.getInstance().getRandomIntBetween(1000, 2000);
+		this.age = RandomNumberGenerator.getInstance().getRandomIntBetween(43, 47);
+		this.startHealthPoints = RandomNumberGenerator.getInstance().getRandomIntBetween(1000, 1500);
 		this.healthPoints = this.startHealthPoints;
 		this.startStrength = RandomNumberGenerator.getInstance().getRandomIntBetween(1000, 2000);
 		this.strenght = this.startStrength;
@@ -148,7 +148,14 @@ public class Fighter {
 		winner.setStrenght(winner.getStartStrength());
 
 		return winner;
+	}
 
+	@Override
+	public String toString() {
+		String fighterData = this.getFullName() + " " + this.getAge() + " years\nhealth: " + this.getHealthPoints()
+				+ "\nstrength: " + this.getStrenght();
+
+		return fighterData;
 	}
 
 }
