@@ -158,4 +158,12 @@ public class Fighter {
 		return fighterData;
 	}
 
+	public boolean isRetired() {
+		if (this.getAge() >= Fighter.theRetirementAge) {
+			System.out.println(this.getFullName() + " is to old to fight. He is limping away in the sunset.");
+			return true;
+		}
+		return false;
+	}
+
 }

@@ -16,11 +16,6 @@ public class Battle {
 		this.myFighter = player1;
 		this.theOpponent = player2;
 	}
-
-	public void start() {
-		
-	}
-	
 	
 	/**
 	 * @return the winning fighter
@@ -75,8 +70,7 @@ public class Battle {
 				e.printStackTrace();
 			}
 			
-			System.out.println(round.targetSurvived ? "" : "\b"+round.target.getFullName() + " died.");
-
+			System.out.println(round.targetSurvived ? "" : round.target.getFullName() + " died.");
 		}
 	}
 
